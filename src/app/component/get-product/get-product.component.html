@@ -1,0 +1,40 @@
+<!--<ag-grid-angular-->
+<!--  style="width: 100%; height: 100%"-->
+<!--  class="ag-theme-alpine"-->
+<!--  [columnDefs]="columnDefs"-->
+<!--  [defaultColDef]="defaultColDef"-->
+<!--  [rowData]="rowData$ | async"-->
+<!--  [rowSelection]="'multiple'"-->
+<!--  [animateRows]="true"-->
+<!--  (gridReady)="onGridReady($event)"-->
+<!--  (cellClicked)="onCellClicked($event)"-->
+<!--&gt;</ag-grid-angular>-->
+
+<div class="container">
+  <table class="table, table-striped, table-border">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product for products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.price}}</td>
+
+    </tr>
+
+    </tbody>
+  </table>
+
+  <div>
+    <a class="nav-link" routerLink="/product/add" routerLinkActive="active" >Add product</a>
+  </div>
+</div>
+
