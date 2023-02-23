@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
-import { Observable } from 'rxjs';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product-service.service';
@@ -12,19 +10,41 @@ import { ProductService } from '../../services/product-service.service';
   templateUrl: './get-product.component.html',
   styleUrls: ['./get-product.component.css']
 })
-export class GetProductComponent implements OnInit {
+export class GetProductComponent  implements OnInit {
+      AgLoad: boolean=false;
+      products:any[]=[];
+       message: any;
 
-products:any;
+constructor (private service:ProductService, private router: Router) {}
+ngOnInit() {
+    this.GetGiftVoucherList();
+  }
 
-constructor (private http: HttpClient, private service:ProductService) {
+      GetGiftVoucherList() {
+        this.AgLoad = true;
+        this.service.getAllProduct()
+        .subscribe((res: any[])=>this.products=res);
+      }
 
-}
+      public addProductPage(){
+       this.router.navigate(['/product/add']);
+      }
 
-   ngOnInit(): void {
-      let responseData = this.service.getAllProduct();
-      responseData.subscribe((data)=>this.products = data);
-   };
+      public editProduct(product: Product){
+            this.message = this.service.addProduct(product)
+            .subscribe((resp_msg: any) => {
+                        this.message = resp_msg;
+                        console.log(this.message);
+                        this.GetGiftVoucherList();
+                     });
+      }
 
-
-
+      public deleteProduct(id: any){
+         this.message = this.service.deleteProduct(id)
+         .subscribe((msg) => {
+            this.message = msg;
+            console.log(this.message);
+            this.GetGiftVoucherList();
+         });
+      }
 }

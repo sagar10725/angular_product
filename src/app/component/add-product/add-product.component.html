@@ -2,9 +2,6 @@
   <div class="row">
     <div class="col-md-4">
       <div class="center" style="text-align:center"><h2>add-product works!</h2></div>
-      <div>
-        <h4 class="center">{{message}}</h4>
-      </div>
       <form (ngSubmit)="addProductDetail()">
         <fieldset class="border"> Add Product
           <div class="form-group">
@@ -13,19 +10,19 @@
           </div>
           <div class="form-group">
             <label>Product Name</label>
-            <input for="Name" type="text" name="name" class="form-control" [(ngModel)]="addProduct.name"/>
+            <input for="Name" type="text" name="name" class="form-control" [(ngModel)]="addProduct.productName"/>
           </div>
           <div class="form-group">
             <label>Product Description</label>
-            <input for="description" type="text" name="description" class="form-control" [(ngModel)]="addProduct.description"/>
+            <input for="description" type="text" name="description" class="form-control" [(ngModel)]="addProduct.productDetail"/>
           </div>
           <div class="form-group">
             <label>Product Price</label>
             <input for="price" type="text" name="price" class="form-control" [(ngModel)]="addProduct.price" />
           </div>
           <div>
-            <button class="btn, btn-success" >Add Product</button>
-            <button class="btn, btn-cancel" type="submit" name="submit_reg" onclick="">Cancel</button>
+            <button class="btn btn-success btn-sm" style="margin:2px;">Add Product</button>
+            <button class="btn btn-info btn-sm" type="submit"  (click)="addProductCancel()">Cancel</button>
 
           </div>
         </fieldset>

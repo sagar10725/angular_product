@@ -5,9 +5,10 @@ import { GetProductComponent } from './component/get-product/get-product.compone
 
 const routes: Routes = [
 
-  {path: '', redirectTo:'product', pathMatch: 'full'},
-  {path: 'product/add',  component: AddProductComponent},
-  {path: 'product', component: GetProductComponent}
+  { path: '', redirectTo:'product', pathMatch: 'full' },
+  { path: 'product/add',  component: AddProductComponent },
+  { path: 'product', component: GetProductComponent },
+  { path: 'product/id',  component: AddProductComponent },
 ];
 
 @NgModule({

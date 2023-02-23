@@ -64,10 +64,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular_product:build:production"
+              "browserTarget": "angular_product:build:production",
+              "proxyConfig": "src/app/proxy.config.json"
             },
             "development": {
-              "browserTarget": "angular_product:build:development"
+              "browserTarget": "angular_product:build:development",
+              "proxyConfig": "src/app/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
@@ -91,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.css"
             ],
             "styles": [
               "src/styles.css",

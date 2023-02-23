@@ -19,11 +19,17 @@ export class AddProductComponent implements OnInit {
     ngOnInit(): void { }
 
     public addProductDetail(){
-       this.submitted=true;
-      this.productService.addProduct(this.addProduct)
-      .subscribe(data=>this.message=data);
-      this.addProduct = new Product();
-      this.router.navigate(['/product']);
+        this.submitted=true;
+        this.productService.addProduct(this.addProduct)
+          .subscribe(data=> {
+            this.message=data;
+            console.log("Message is : {}", this.message);
+
+          });
+        this.router.navigate(['/product']);
+    }
+
+    public addProductCancel() {
     }
 
 }
